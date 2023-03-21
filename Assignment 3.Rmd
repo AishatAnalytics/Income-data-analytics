@@ -1,0 +1,70 @@
+---
+title: "Assignment 3"
+author: "Aishat Olatunji"
+date: "2022-09-09"
+output: word_document
+---
+
+```{r}
+#file.choose()
+income_data <- read.csv("/Users/aishatolatunji/Documents/Data Analytics/Income Data.csv")
+summary(income_data)
+head(income_data)
+attach(income_data) # The purpose of using this attach is for r to know all the variables present in my data.
+```
+```{r}
+#Number one
+summary(income_data['income'])
+summary(income_data['education'])
+summary(income_data['prestige'])
+```
+```{r}
+#Number two
+hist(income_data[,c('prestige')])
+
+# or
+hist(prestige)
+
+
+```
+```{r}
+#Number three
+plot(income,education)
+
+# or
+plot(income_data[,c('income','education')])
+```
+```{r}
+#Number 4
+var(income)
+
+
+## ii
+sqrt(var(income))
+
+#or
+var(income_data[,c("income")])
+sqrt(var(income_data[,c("income")])
+)
+```
+
+```{r}
+# number 5
+cor(income,education, method = c("pearson"))
+# we have quite a strong positive relationship between the two variables i.e the income and education.
+
+# Finding the pvalue between the income and education
+library(Hmisc)
+rcorr(income,education, type="pearson")
+# The pvalue is 0 (zero) which is signicantly small, 
+
+# setting my hypothesis
+#Ho: There is no relationship
+#H1: There is a significant relationship
+
+# Decision rule: reject Ho(null hypothesis) if the pvalue is less than alpha(0.05) otherwise do not reject Ho
+#Decision: since,i tried to compare it at 95% significant level which is also less than my alpha(0.05). therefore i reject the null hypothesis and conclude that  this result shows that there is a significant and positive relationship between the two variables.
+
+
+
+```
